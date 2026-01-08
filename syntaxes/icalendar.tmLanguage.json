@@ -2,61 +2,93 @@
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "iCalendar",
     "scopeName": "source.icalendar",
+    "foldingStartMarker": "^BEGIN:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$",
+    "foldingStopMarker": "^END:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$",
     "patterns": [
-        {
-            "include": "#components"
-        },
-        {
-            "include": "#properties"
-        },
-        {
-            "include": "#parameters"
-        },
-        {
-            "include": "#values"
-        }
+        { "include": "#line" }
     ],
     "repository": {
-        "components": {
+        "line": {
             "patterns": [
-                {
-                    "name": "keyword.control.icalendar",
-                    "match": "^(BEGIN|END):(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$"
-                }
+                { "include": "#delimiters" },
+                { "include": "#x-properties" },
+                { "include": "#properties" },
+                { "include": "#values" }
             ]
+        },
+        "delimiters": {
+            "captures": {
+                "1": { "name": "keyword.control.begin.icalendar" },
+                "2": { "name": "support.class.component.icalendar" }
+            },
+            "match": "^(BEGIN):\\b(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM|STANDARD|DAYLIGHT)\\b"
         },
         "properties": {
             "patterns": [
                 {
-                    "name": "entity.name.function.icalendar",
-                    "match": "^([A-Z-]+)(;|=|,|:)"
+                    "captures": {
+                        "1": { "name": "support.function.property.icalendar" },
+                        "2": { "name": "punctuation.separator.property.icalendar" }
+                    },
+                    "match": "^\\b(CALSCALE|METHOD|PRODID|VERSION|ATTACH|CATEGORIES|CLASS|COLOR|COMMENT|CONFERENCE|DESCRIPTION|GEO|IMAGE|LAST-MODIFIED|LOCATION|PERCENT-COMPLETE|PRIORITY|RESOURCES|STATUS|SUMMARY|COMPLETED|DTEND|DUE|DTSTART|DURATION|FREEBUSY|NAME|TRANSP|TZID|TZNAME|TZOFFSETFROM|TZOFFSETTO|TZURL|ATTENDEE|CONTACT|ORGANIZER|RECURRENCE-ID|REFRESH-INTERVAL|RELATED-TO|SOURCE|URL|UID|EXDATE|EXRULE|RDATE|RRULE|ACTION|REPEAT|TRIGGER|CREATED|DTSTAMP|LAST-MODIFIED|SEQUENCE|REQUEST-STATUS|ALTREP|CN|CUTYPE|DELEGATED-FROM|DELEGATED-TO|DIR|ENCODING|FMTTYPE|FBTYPE|LANGUAGE|MEMBER|PARTSTAT|RANGE|RELATED|RELTYPE|ROLE|RSVP|SENT-BY|TZID|URL|VALUE)\\b([;:])"
                 }
             ]
         },
-        "parameters": {
+        "x-properties": {
             "patterns": [
                 {
-                    "name": "variable.parameter.icalendar",
-                    "match": ";([A-Z-]+)="
+                    "captures": {
+                        "1": { "name": "entity.other.attribute-name.x-property.icalendar" },
+                        "2": { "name": "punctuation.separator.property.icalendar" }
+                    },
+                    "match": "^(X-[A-Z0-9-]+)([;:])"
+                }
+            ]
+        },
+        "parameters":{
+            "patterns":[
+                {
+                    "captures": {
+                        "1": { "name": "punctuation.separator.parameter.icalendar" },
+                        "2": { "name": "variable.parameter.icalendar" },
+                        "3": { "name": "punctuation.separator.parameter.icalendar" }
+                    },
+                    "match": "([;])([A-Z0-9-]+)(=)"
                 }
             ]
         },
         "values": {
             "patterns": [
+                { "include": "#strings" },
+                { "include": "#constants" },
+                { "include": "#date-time" },
+                { "include": "#parameters" }
+            ]
+        },
+        "constants":{
+            "patterns":[
                 {
-                    "name": "string.unquoted.icalendar",
-                    "match": ":(.*)$"
-                },
+                    "name": "support.constant.value.icalendar",
+                    "match": "\\b(BINARY|BOOLEAN|CAL-ADDRESS|DATE-TIME|DATE|DISPLAY|DURATION|EMAIL|FEATURE|FLOAT|INTEGER|LABEL|PERIOD|RECUR|TEXT|TIME|URI|UTC-OFFSET|INDIVIDUAL|GROUP|RESOURCE|ROOM|UNKNOWN|FREE|BUSY-UNAVAILABLE|BUSY-TENTATIVE|BUSY|NEEDS-ACTION|ACCEPTED|DECLINED|TENTATIVE|DELEGATED|IN-PROCESS|CHILD|PARENT|SIBLING|CHAIR|REQ-PARTICIPANT|OPT-PARTICIPANT|NON-PARTICIPANT|AUDIO|DISPLAY|EMAIL|PROCEDURE|PUBLIC|PRIVATE|CONFIDENTIAL|CONFIRMED|CANCELLED|NEEDS-ACTION|IN-PROCESS|DRAFT|FINAL|OPAQUE|TRANSPARENT|TRUE|FALSE|FREQ|UNTIL|COUNT|INTERVAL|BYSECOND|BYMINUTE|BYHOUR|BYDAY|BYMONTHDAY|BYYEARDAY|BYWEEKNO|BYMONTH|BYSETPOS|WKST|SECONDLY|MINUTELY|HOURLY|DAILY|WEEKLY|MONTHLY|YEARLY|[+\\-]?[1-5]?[0-9]?MO|[+\\-]?[1-5]?[0-9]?TU|[+\\-]?[1-5]?[0-9]?WE|[+\\-]?[1-5]?[0-9]?TH|[+\\-]?[1-5]?[0-9]?FR|[+\\-]?[1-5]?[0-9]?SA|[+\\-]?[1-5]?[0-9]?SU)\\b"
+                }
+            ]
+        },
+        "date-time": {
+            "patterns": [
                 {
-                    "name": "string.quoted.double.icalendar",
-                    "begin": "\"",
-                    "end": "\"",
-                    "patterns": [
-                        {
-                            "name": "constant.character.escape.icalendar",
-                            "match": "\\\\."
-                        }
-                    ]
+                    "name": "constant.numeric.date-time.icalendar",
+                    "match": "\\b[0-9]{8}(T[0-9]{6}Z?)?\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.icalendar",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.icalendar",
+                    "match": "\\\\."
                 }
             ]
         }
