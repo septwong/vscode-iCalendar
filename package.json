@@ -1,0 +1,25 @@
+{
+  "name": "icalendar",
+  "displayName": "icalendar",
+  "description": "iCalendar syntax highlighting for VS Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "icalendar",
+      "aliases": ["iCalendar", "icalendar"],
+      "extensions": [".ics"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "icalendar",
+      "scopeName": "source.icalendar",
+      "path": "./syntaxes/icalendar.tmLanguage.json"
+    }]
+  }
+}
