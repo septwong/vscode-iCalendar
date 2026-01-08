@@ -17,11 +17,22 @@
             ]
         },
         "delimiters": {
-            "captures": {
-                "1": { "name": "keyword.control.begin.icalendar" },
-                "2": { "name": "support.class.component.icalendar" }
-            },
-            "match": "^(BEGIN):\\b(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM|STANDARD|DAYLIGHT)\\b"
+            "patterns": [
+                {
+                    "captures": {
+                        "1": { "name": "keyword.control.begin.icalendar" },
+                        "2": { "name": "support.class.component.icalendar" }
+                    },
+                    "match": "^(BEGIN):\\b(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM|STANDARD|DAYLIGHT)\\b"
+                },
+                {
+                    "captures": {
+                        "1": { "name": "keyword.control.end.icalendar" },
+                        "2": { "name": "support.class.component.icalendar" }
+                    },
+                    "match": "^(END):\\b(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM|STANDARD|DAYLIGHT)\\b"
+                }
+            ]
         },
         "properties": {
             "patterns": [
@@ -48,12 +59,25 @@
         "parameters":{
             "patterns":[
                 {
-                    "captures": {
-                        "1": { "name": "punctuation.separator.parameter.icalendar" },
-                        "2": { "name": "variable.parameter.icalendar" },
-                        "3": { "name": "punctuation.separator.parameter.icalendar" }
+                    "begin": ";",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.separator.parameter.icalendar" }
                     },
-                    "match": "([;])([A-Z0-9-]+)(=)"
+                    "end": "(?=:)",
+                    "patterns": [
+                        {
+                            "captures": {
+                                "1": { "name": "variable.parameter.name.icalendar" },
+                                "2": { "name": "punctuation.separator.parameter.icalendar" }
+                            },
+                            "match": "([A-Z0-9-]+)(=)"
+                        },
+                        { "include": "#strings" },
+                        {
+                            "name": "string.unquoted.parameter.icalendar",
+                            "match": "[^;:=,]+"
+                        }
+                    ]
                 }
             ]
         },

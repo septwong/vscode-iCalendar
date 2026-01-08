@@ -1,6 +1,6 @@
 {
   "name": "icalendar-syntax",
-  "displayName": "iCalendar",
+  "displayName": "iCalendar Syntax",
   "description": "iCalendar syntax highlighting for VS Code",
   "version": "1.0.0",
   "publisher": "SeptWong",
@@ -21,7 +21,8 @@
   },
   "license": "MIT",
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets",
   ],
   "keywords": [
     "icalendar",
