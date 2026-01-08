@@ -9,10 +9,6 @@
     "color": "#1e1f22",
     "theme": "dark"
   },
-  "main": "./extension.js",
-  "activationEvents": [
-    "onLanguage:icalendar"
-  ],
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -27,7 +23,6 @@
   "categories": [
     "Programming Languages",
     "Snippets",
-    "Formatters"
   ],
   "keywords": [
     "icalendar",
@@ -65,12 +60,5 @@
         "path": "snippets/icalendar.json"
       }
     ]
-  },
-  "dependencies": {
-    "ical-generator": "^10.0.0",
-    "node-ical": "^0.22.1"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.90.0"
   }
 }
