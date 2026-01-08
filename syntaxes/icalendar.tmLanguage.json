@@ -1,32 +1,64 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "iCalendar",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.icalendar",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.icalendar",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.icalendar",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.icalendar"
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "iCalendar",
+    "scopeName": "source.icalendar",
+    "patterns": [
+        {
+            "include": "#components"
+        },
+        {
+            "include": "#properties"
+        },
+        {
+            "include": "#parameters"
+        },
+        {
+            "include": "#values"
+        }
+    ],
+    "repository": {
+        "components": {
+            "patterns": [
+                {
+                    "name": "keyword.control.icalendar",
+                    "match": "^(BEGIN|END):(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$"
+                }
+            ]
+        },
+        "properties": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.icalendar",
+                    "match": "^([A-Z-]+)(;|=|,|:)"
+                }
+            ]
+        },
+        "parameters": {
+            "patterns": [
+                {
+                    "name": "variable.parameter.icalendar",
+                    "match": ";([A-Z-]+)="
+                }
+            ]
+        },
+        "values": {
+            "patterns": [
+                {
+                    "name": "string.unquoted.icalendar",
+                    "match": ":(.*)$"
+                },
+                {
+                    "name": "string.quoted.double.icalendar",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.icalendar",
+                            "match": "\\\\."
+                        }
+                    ]
+                }
+            ]
+        }
+    }
 }

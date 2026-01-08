@@ -1,25 +1,63 @@
 {
-  "name": "icalendar",
-  "displayName": "icalendar",
+  "name": "icalendar-syntax",
+  "displayName": "iCalendar",
   "description": "iCalendar syntax highlighting for VS Code",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.107.0"
+  "version": "1.0.0",
+  "publisher": "SeptWong",
+  "icon": "assets/images/logo.png",
+  "galleryBanner": {
+    "color": "#1e1f22",
+    "theme": "dark"
   },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/septwong/vscode-iCalendar"
+  },
+  "bugs": {
+    "url": "https://github.com/septwong/vscode-iCalendar/issues"
+  },
+  "license": "MIT",
   "categories": [
     "Programming Languages"
   ],
+  "keywords": [
+    "icalendar",
+    "ical",
+    "ics",
+    "ifb"
+  ],
   "contributes": {
-    "languages": [{
-      "id": "icalendar",
-      "aliases": ["iCalendar", "icalendar"],
-      "extensions": [".ics"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "icalendar",
-      "scopeName": "source.icalendar",
-      "path": "./syntaxes/icalendar.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "icalendar",
+        "aliases": [
+          "iCalendar",
+          "icalendar"
+        ],
+        "extensions": [
+          ".ical",
+          ".icalendar",
+          ".ics",
+          ".ifb"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "icalendar",
+        "scopeName": "source.icalendar",
+        "path": "./syntaxes/icalendar.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "icalendar",
+        "path": "snippets/icalendar.json"
+      }
+    ]
   }
 }
