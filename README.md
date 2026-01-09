@@ -12,3 +12,7 @@ Provides comprehensive iCalendar (`.ics`, `.ical`, `.ifb`) syntax highlighting f
 - **Distinct Scopes**: Provides clear and distinct styling for keywords, properties, parameters, values, and custom `X-` properties.
 
 <!-- ![screenshot](https://raw.githubusercontent.com/septwong/vscode-iCalendar/main/assets/md_images/screenshot.png) -->
+
+## Resources
+
+- [iCalendar](https://marketplace.visualstudio.com/items?itemName=af4jm.vscode-icalendar)
