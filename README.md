@@ -1,4 +1,10 @@
-# iCalendar
+# iCalendar Syntax
+
+<p align="center">
+    <span> English</span>
+    ·
+    <a href="https://github.com/septwong/vscode-iCalendar/blob/main/README_zh-cn.md"> 简体中文</a>
+</p>
 
 iCalendar for VS Code
 
