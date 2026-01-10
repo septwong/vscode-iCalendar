@@ -72,10 +72,20 @@
                             },
                             "match": "([A-Z0-9-]+)(=)"
                         },
-                        { "include": "#strings" },
+                        {
+                            "name": "string.quoted.double.icalendar",
+                            "begin": "\"",
+                            "end": "\"",
+                            "patterns": [
+                                {
+                                    "name": "constant.character.escape.icalendar",
+                                    "match": "\\\\."
+                                }
+                            ]
+                        },
                         {
                             "name": "string.unquoted.parameter.icalendar",
-                            "match": "[^;:=,]+"
+                            "match": "(?<=;TZID=)[^;:=,]+|[^;:=,]+"
                         }
                     ]
                 }
@@ -100,8 +110,16 @@
         "date-time": {
             "patterns": [
                 {
-                    "name": "constant.numeric.date-time.icalendar",
-                    "match": "\\b[0-9]{8}(T[0-9]{6}Z?)?\\b"
+                    "name": "constant.numeric.datetime.utc.icalendar",
+                    "match": "\\b[0-9]{8}T[0-9]{6}Z\\b"
+                },
+                {
+                    "name": "constant.numeric.datetime.local.icalendar",
+                    "match": "\\b[0-9]{8}T[0-9]{6}(?<!Z)\\b"
+                },
+                {
+                    "name": "constant.numeric.date.icalendar",
+                    "match": "\\b[0-9]{8}\\b"
                 }
             ]
         },
