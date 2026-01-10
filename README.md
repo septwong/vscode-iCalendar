@@ -7,12 +7,16 @@ Provides comprehensive iCalendar (`.ics`, `.ical`, `.ifb`) syntax highlighting f
 ## Features
 
 - **Full Syntax Highlighting**: Accurately highlights all standard iCalendar components, properties, constants, and parameters.
-- **Code Folding**: Easily collapse and expand `BEGIN`/`END` blocks for major components like `VCALENDAR`, `VEVENT`, and `VTODO`.
+- **Code Folding**: Easily collapse and expand `BEGIN`/`END` blocks for major components like `VCALENDAR`, `VEVENT`, `VTODO`, and `VTIMEZONE`.
 - **RFC 5545 Compliant**: Based on the official iCalendar specification for maximum accuracy.
+- **Timezone-Friendly**: Default optimized for CN / Asia/Shanghai users; VEVENT components automatically inherit the calendar timezone.
+- **Date-Time Distinction**: Highlights UTC times and local times separately for clearer readability.
+- **Parameter Highlighting**: `TZID` and other parameter values are highlighted to improve clarity.
 - **Distinct Scopes**: Provides clear and distinct styling for keywords, properties, parameters, values, and custom `X-` properties.
 
+<!-- Screenshot example (optional) -->
 <!-- ![screenshot](https://raw.githubusercontent.com/septwong/vscode-iCalendar/main/assets/md_images/screenshot.png) -->
 
 ## Resources
 
-- [iCalendar](https://marketplace.visualstudio.com/items?itemName=af4jm.vscode-icalendar)
+- [iCalendar Marketplace Page](https://marketplace.visualstudio.com/items?itemName=af4jm.vscode-icalendar)

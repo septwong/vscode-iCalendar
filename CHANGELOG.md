@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2026-01-10
+
+### Changed
+- Optimized snippets for CN / Asia/Shanghai time zone.
+- Simplified VEVENT leveraging VCALENDAR time zone.
+- Improved date-time highlighting to distinguish UTC vs local times.
+- Added TZID parameter highlighting.
+
 ## [1.0.0] - 2026-01-08
 
 ### Added
