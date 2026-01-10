@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "ALLDAY",
         "CALDESC",
         "CALNAME",
         "CALSCALE",
@@ -8,9 +9,12 @@
         "DTSTAMP",
         "DTSTART",
         "eztool",
+        "ICAL",
+        "icalendar",
         "keyframes",
         "mindmap",
         "PRODID",
+        "RELTYPE",
         "TZNAME",
         "TZOFFSETFROM",
         "TZOFFSETTO",
