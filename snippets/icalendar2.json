@@ -9,26 +9,10 @@
       "CALSCALE:GREGORIAN",
       "METHOD:PUBLISH",
       "X-WR-CALNAME:${1:My Calendar}",
-      "X-WR-TIMEZONE:${2:Asia/Shanghai}",
-      "X-WR-CALDESC:${3:Description}",
+      "X-WR-TIMEZONE:${2:UTC}",
+      "X-WR-CALDESC:${3: }",
       "$TM_SELECTED_TEXT$0",
       "END:VCALENDAR"
-    ]
-  },
-  "ICAL-VTIMEZONE": {
-    "description": "VTIMEZONE component (root calendar container)",
-    "prefix": "ical-timezone",
-    "body": [
-      "BEGIN:VTIMEZONE",
-      "TZID:${1:Asia/Shanghai}",
-      "X-LIC-LOCATION:${1:Asia/Shanghai}",
-      "BEGIN:STANDARD",
-      "TZOFFSETFROM:${2:+0800}",
-      "TZOFFSETTO:${2:+0800}",
-      "TZNAME:CST",
-      "DTSTART:19700101T000000",
-      "END:STANDARD",
-      "END:VTIMEZONE"
     ]
   },
   "ICAL-VEVENT-TIMED": {
@@ -45,9 +29,6 @@
       "DESCRIPTION:${7:Event description}",
       "STATUS:CONFIRMED",
       "SEQUENCE:0",
-      "TRANSP:TRANSPARENT",
-      "CREATED:${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}T${CURRENT_HOUR}${CURRENT_MINUTE}${CURRENT_SECOND}Z",
-      "LAST-MODIFIED:${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}T${CURRENT_HOUR}${CURRENT_MINUTE}${CURRENT_SECOND}Z",
       "END:VEVENT"
     ]
   },
@@ -56,17 +37,13 @@
     "prefix": "ical-event-day",
     "body": [
       "BEGIN:VEVENT",
-      "UID:${1:${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}T000001@example.com}",
+      "UID:${1:${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}@example.com}",
       "DTSTAMP:${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}T${CURRENT_HOUR}${CURRENT_MINUTE}${CURRENT_SECOND}Z",
       "DTSTART;VALUE=DATE:${2:20260110}",
       "DTEND;VALUE=DATE:${3:20260111}",
       "SUMMARY:${4:All-day event}",
       "DESCRIPTION:${5:Event description}",
       "STATUS:CONFIRMED",
-      "SEQUENCE:0",
-      "TRANSP:TRANSPARENT",
-      "CREATED:${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}T${CURRENT_HOUR}${CURRENT_MINUTE}${CURRENT_SECOND}Z",
-      "LAST-MODIFIED:${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}T${CURRENT_HOUR}${CURRENT_MINUTE}${CURRENT_SECOND}Z",
       "END:VEVENT"
     ]
   },
@@ -77,7 +54,7 @@
       "BEGIN:VALARM",
       "ACTION:DISPLAY",
       "DESCRIPTION:${1:Reminder}",
-      "TRIGGER:${2:-PT60M}",
+      "TRIGGER:-PT${2:10}M",
       "END:VALARM"
     ]
   },
