@@ -28,7 +28,11 @@
     "icalendar",
     "ical",
     "ics",
-    "ifb"
+    "ifb",
+    "calendar",
+    "events",
+    "VEVENT",
+    "VTIMEZONE"
   ],
   "contributes": {
     "languages": [
