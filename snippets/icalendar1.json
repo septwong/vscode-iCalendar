@@ -5,12 +5,10 @@
     "body": [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//VSCode iCalendar Snippets//CN",
+      "PRODID:-//VSCode iCalendar Snippets//EN",
       "CALSCALE:GREGORIAN",
-      "METHOD:PUBLISH",
       "X-WR-CALNAME:${1:My Calendar}",
       "X-WR-TIMEZONE:${2:UTC}",
-      "X-WR-CALDESC:${3: }",
       "$TM_SELECTED_TEXT$0",
       "END:VCALENDAR"
     ]
