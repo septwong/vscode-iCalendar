@@ -25,4 +25,4 @@ Provides comprehensive iCalendar (`.ics`, `.ical`, `.ifb`) syntax highlighting f
 
 ## Resources
 
-- [iCalendar Marketplace Page](https://marketplace.visualstudio.com/items?itemName=af4jm.vscode-icalendar)
+- [iCalendar](https://marketplace.visualstudio.com/items?itemName=af4jm.vscode-icalendar)

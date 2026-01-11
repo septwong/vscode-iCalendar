@@ -37,5 +37,5 @@ iCalendar 是一款适用于 VS Code 的日历语法高亮插件，支持 `.ics`
 
 ## 资源
 
-- [iCalendar Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=af4jm.vscode-icalendar)
+- [iCalendar](https://marketplace.visualstudio.com/items?itemName=af4jm.vscode-icalendar)
 - [RFC 5545 标准](https://tools.ietf.org/html/rfc5545)
