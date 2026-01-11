@@ -5,30 +5,48 @@
     "foldingStartMarker": "^BEGIN:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$",
     "foldingStopMarker": "^END:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$",
     "patterns": [
-        { "include": "#line" }
+        {
+            "include": "#line"
+        }
     ],
     "repository": {
         "line": {
             "patterns": [
-                { "include": "#delimiters" },
-                { "include": "#x-properties" },
-                { "include": "#properties" },
-                { "include": "#values" }
+                {
+                    "include": "#delimiters"
+                },
+                {
+                    "include": "#x-properties"
+                },
+                {
+                    "include": "#properties"
+                },
+                {
+                    "include": "#values"
+                }
             ]
         },
         "delimiters": {
             "patterns": [
                 {
                     "captures": {
-                        "1": { "name": "keyword.control.begin.icalendar" },
-                        "2": { "name": "support.class.component.icalendar" }
+                        "1": {
+                            "name": "keyword.control.begin.icalendar"
+                        },
+                        "2": {
+                            "name": "support.class.component.icalendar"
+                        }
                     },
                     "match": "^(BEGIN):\\b(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM|STANDARD|DAYLIGHT)\\b"
                 },
                 {
                     "captures": {
-                        "1": { "name": "keyword.control.end.icalendar" },
-                        "2": { "name": "support.class.component.icalendar" }
+                        "1": {
+                            "name": "keyword.control.end.icalendar"
+                        },
+                        "2": {
+                            "name": "support.class.component.icalendar"
+                        }
                     },
                     "match": "^(END):\\b(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM|STANDARD|DAYLIGHT)\\b"
                 }
@@ -38,8 +56,12 @@
             "patterns": [
                 {
                     "captures": {
-                        "1": { "name": "support.function.property.icalendar" },
-                        "2": { "name": "punctuation.separator.property.icalendar" }
+                        "1": {
+                            "name": "support.function.property.icalendar"
+                        },
+                        "2": {
+                            "name": "punctuation.separator.property.icalendar"
+                        }
                     },
                     "match": "^\\b(CALSCALE|METHOD|PRODID|VERSION|ATTACH|CATEGORIES|CLASS|COLOR|COMMENT|CONFERENCE|DESCRIPTION|GEO|IMAGE|LAST-MODIFIED|LOCATION|PERCENT-COMPLETE|PRIORITY|RESOURCES|STATUS|SUMMARY|COMPLETED|DTEND|DUE|DTSTART|DURATION|FREEBUSY|NAME|TRANSP|TZID|TZNAME|TZOFFSETFROM|TZOFFSETTO|TZURL|ATTENDEE|CONTACT|ORGANIZER|RECURRENCE-ID|REFRESH-INTERVAL|RELATED-TO|SOURCE|URL|UID|EXDATE|EXRULE|RDATE|RRULE|ACTION|REPEAT|TRIGGER|CREATED|DTSTAMP|LAST-MODIFIED|SEQUENCE|REQUEST-STATUS|ALTREP|CN|CUTYPE|DELEGATED-FROM|DELEGATED-TO|DIR|ENCODING|FMTTYPE|FBTYPE|LANGUAGE|MEMBER|PARTSTAT|RANGE|RELATED|RELTYPE|ROLE|RSVP|SENT-BY|TZID|URL|VALUE)\\b([;:])"
                 }
@@ -49,26 +71,36 @@
             "patterns": [
                 {
                     "captures": {
-                        "1": { "name": "entity.other.attribute-name.x-property.icalendar" },
-                        "2": { "name": "punctuation.separator.property.icalendar" }
+                        "1": {
+                            "name": "entity.other.attribute-name.x-property.icalendar"
+                        },
+                        "2": {
+                            "name": "punctuation.separator.property.icalendar"
+                        }
                     },
                     "match": "^(X-[A-Z0-9-]+)([;:])"
                 }
             ]
         },
-        "parameters":{
-            "patterns":[
+        "parameters": {
+            "patterns": [
                 {
                     "begin": ";",
                     "beginCaptures": {
-                        "0": { "name": "punctuation.separator.parameter.icalendar" }
+                        "0": {
+                            "name": "punctuation.separator.parameter.icalendar"
+                        }
                     },
                     "end": "(?=:)",
                     "patterns": [
                         {
                             "captures": {
-                                "1": { "name": "variable.parameter.name.icalendar" },
-                                "2": { "name": "punctuation.separator.parameter.icalendar" }
+                                "1": {
+                                    "name": "variable.parameter.name.icalendar"
+                                },
+                                "2": {
+                                    "name": "punctuation.separator.parameter.icalendar"
+                                }
                             },
                             "match": "([A-Z0-9-]+)(=)"
                         },
@@ -93,14 +125,26 @@
         },
         "values": {
             "patterns": [
-                { "include": "#strings" },
-                { "include": "#constants" },
-                { "include": "#date-time" },
-                { "include": "#parameters" }
+                {
+                    "name": "constant.character.escape.newline.icalendar",
+                    "match": "\\\\n"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#constants"
+                },
+                {
+                    "include": "#date-time"
+                },
+                {
+                    "include": "#parameters"
+                }
             ]
         },
-        "constants":{
-            "patterns":[
+        "constants": {
+            "patterns": [
                 {
                     "name": "support.constant.value.icalendar",
                     "match": "\\b(BINARY|BOOLEAN|CAL-ADDRESS|DATE-TIME|DATE|DISPLAY|DURATION|EMAIL|FEATURE|FLOAT|INTEGER|LABEL|PERIOD|RECUR|TEXT|TIME|URI|UTC-OFFSET|INDIVIDUAL|GROUP|RESOURCE|ROOM|UNKNOWN|FREE|BUSY-UNAVAILABLE|BUSY-TENTATIVE|BUSY|NEEDS-ACTION|ACCEPTED|DECLINED|TENTATIVE|DELEGATED|IN-PROCESS|CHILD|PARENT|SIBLING|CHAIR|REQ-PARTICIPANT|OPT-PARTICIPANT|NON-PARTICIPANT|AUDIO|DISPLAY|EMAIL|PROCEDURE|PUBLIC|PRIVATE|CONFIDENTIAL|CONFIRMED|CANCELLED|NEEDS-ACTION|IN-PROCESS|DRAFT|FINAL|OPAQUE|TRANSPARENT|TRUE|FALSE|FREQ|UNTIL|COUNT|INTERVAL|BYSECOND|BYMINUTE|BYHOUR|BYDAY|BYMONTHDAY|BYYEARDAY|BYWEEKNO|BYMONTH|BYSETPOS|WKST|SECONDLY|MINUTELY|HOURLY|DAILY|WEEKLY|MONTHLY|YEARLY|[+\\-]?[1-5]?[0-9]?MO|[+\\-]?[1-5]?[0-9]?TU|[+\\-]?[1-5]?[0-9]?WE|[+\\-]?[1-5]?[0-9]?TH|[+\\-]?[1-5]?[0-9]?FR|[+\\-]?[1-5]?[0-9]?SA|[+\\-]?[1-5]?[0-9]?SU)\\b"
@@ -128,6 +172,10 @@
             "begin": "\"",
             "end": "\"",
             "patterns": [
+                {
+                    "name": "constant.character.escape.newline.icalendar",
+                    "match": "\\\\n"
+                },
                 {
                     "name": "constant.character.escape.icalendar",
                     "match": "\\\\."
