@@ -2,7 +2,7 @@
   "name": "icalendar-syntax",
   "displayName": "iCalendar Syntax",
   "description": "iCalendar syntax highlighting for VS Code",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "SeptWong",
   "icon": "assets/images/logo.png",
   "galleryBanner": {
