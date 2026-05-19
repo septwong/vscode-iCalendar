@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2026-05-19
+
+### Changed
+- Added the extension entry point and activation event so the folding provider loads for iCalendar files.
+- Cleaned packaged extension contents by excluding development-only notes and unused icon variants.
+
 ## [1.0.3] - 2026-01-12
 
 ### Changed

@@ -2,8 +2,8 @@
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "iCalendar",
     "scopeName": "source.icalendar",
-    "foldingStartMarker": "^BEGIN:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$",
-    "foldingStopMarker": "^END:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$",
+    "foldingStartMarker": "^BEGIN:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|STANDARD|DAYLIGHT|VALARM)$",
+    "foldingStopMarker": "^END:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|STANDARD|DAYLIGHT|VALARM)$",
     "patterns": [
         {
             "include": "#line"
@@ -14,6 +14,9 @@
             "patterns": [
                 {
                     "include": "#delimiters"
+                },
+                {
+                    "include": "#continuation"
                 },
                 {
                     "include": "#x-properties"
@@ -52,18 +55,11 @@
                 }
             ]
         },
-        "properties": {
+        "continuation": {
             "patterns": [
                 {
-                    "captures": {
-                        "1": {
-                            "name": "support.function.property.icalendar"
-                        },
-                        "2": {
-                            "name": "punctuation.separator.property.icalendar"
-                        }
-                    },
-                    "match": "^\\b(CALSCALE|METHOD|PRODID|VERSION|ATTACH|CATEGORIES|CLASS|COLOR|COMMENT|CONFERENCE|DESCRIPTION|GEO|IMAGE|LAST-MODIFIED|LOCATION|PERCENT-COMPLETE|PRIORITY|RESOURCES|STATUS|SUMMARY|COMPLETED|DTEND|DUE|DTSTART|DURATION|FREEBUSY|NAME|TRANSP|TZID|TZNAME|TZOFFSETFROM|TZOFFSETTO|TZURL|ATTENDEE|CONTACT|ORGANIZER|RECURRENCE-ID|REFRESH-INTERVAL|RELATED-TO|SOURCE|URL|UID|EXDATE|EXRULE|RDATE|RRULE|ACTION|REPEAT|TRIGGER|CREATED|DTSTAMP|LAST-MODIFIED|SEQUENCE|REQUEST-STATUS|ALTREP|CN|CUTYPE|DELEGATED-FROM|DELEGATED-TO|DIR|ENCODING|FMTTYPE|FBTYPE|LANGUAGE|MEMBER|PARTSTAT|RANGE|RELATED|RELTYPE|ROLE|RSVP|SENT-BY|TZID|URL|VALUE)\\b([;:])"
+                    "name": "meta.continuation.icalendar",
+                    "match": "^[ \t].*$"
                 }
             ]
         },
@@ -79,6 +75,41 @@
                         }
                     },
                     "match": "^(X-[A-Z0-9-]+)([;:])"
+                }
+            ]
+        },
+        "properties": {
+            "patterns": [
+                {
+                    "captures": {
+                        "1": {
+                            "name": "support.function.property.icalendar"
+                        },
+                        "2": {
+                            "name": "punctuation.separator.property.icalendar"
+                        }
+                    },
+                    "match": "^\\b(CALSCALE|METHOD|PRODID|VERSION|ATTACH|CATEGORIES|CLASS|COLOR|COMMENT|CONFERENCE|DESCRIPTION|GEO|IMAGE|LAST-MODIFIED|LOCATION|PERCENT-COMPLETE|PRIORITY|RESOURCES|STATUS|SUMMARY|COMPLETED|DTEND|DUE|DTSTART|DURATION|FREEBUSY|NAME|TRANSP|TZID|TZNAME|TZOFFSETFROM|TZOFFSETTO|TZURL|ATTENDEE|CONTACT|ORGANIZER|RECURRENCE-ID|REFRESH-INTERVAL|RELATED-TO|SOURCE|URL|UID|EXDATE|EXRULE|RDATE|RRULE|ACTION|REPEAT|TRIGGER|CREATED|DTSTAMP|LAST-MODIFIED|SEQUENCE|REQUEST-STATUS|ALTREP|CN|CUTYPE|DELEGATED-FROM|DELEGATED-TO|DIR|ENCODING|FMTTYPE|FBTYPE|LANGUAGE|MEMBER|PARTSTAT|RANGE|RELATED|RELTYPE|ROLE|RSVP|SENT-BY|TZID|URL|VALUE)\\b([;:])"
+                }
+            ]
+        },
+        "values": {
+            "patterns": [
+                {
+                    "name": "constant.character.escape.newline.icalendar",
+                    "match": "\\\\n"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#constants"
+                },
+                {
+                    "include": "#date-time"
+                },
+                {
+                    "include": "#parameters"
                 }
             ]
         },
@@ -120,26 +151,6 @@
                             "match": "(?<=;TZID=)[^;:=,]+|[^;:=,]+"
                         }
                     ]
-                }
-            ]
-        },
-        "values": {
-            "patterns": [
-                {
-                    "name": "constant.character.escape.newline.icalendar",
-                    "match": "\\\\n"
-                },
-                {
-                    "include": "#strings"
-                },
-                {
-                    "include": "#constants"
-                },
-                {
-                    "include": "#date-time"
-                },
-                {
-                    "include": "#parameters"
                 }
             ]
         },

@@ -1,5 +1,11 @@
 {
     "brackets": [],
     "autoClosingPairs": [],
-    "surroundingPairs": []
+    "surroundingPairs": [],
+    "folding": {
+        "markers": {
+            "start": "^BEGIN:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|STANDARD|DAYLIGHT|VALARM)$",
+            "end": "^END:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|STANDARD|DAYLIGHT|VALARM)$"
+        }
+    }
 }
