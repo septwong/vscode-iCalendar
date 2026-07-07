@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2026-07-07
+
+### Added
+- Added a basic `.ics` example for manual syntax highlighting checks.
+
+### Changed
+- Improved TextMate grammar handling for parameterized properties.
+- Added folding support for `STANDARD` and `DAYLIGHT` timezone components.
+- Refined package ignore rules to keep local and development-only files out of the extension package.
+
 ## [1.0.3] - 2026-01-12
 
 ### Changed
