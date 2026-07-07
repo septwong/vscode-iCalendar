@@ -31,7 +31,7 @@ iCalendar 是一款适用于 VS Code 的日历语法高亮插件，支持 `.ics`
 ## 安装与使用
 
 1. 打开 VS Code
-2. 在扩展市场搜索 `iCalendar` 或访问 [Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=af4jm.vscode-icalendar)
+2. 在扩展市场搜索 `iCalendar Syntax` 或访问 [Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=SeptWong.icalendar-syntax)
 3. 点击安装
 4. 打开 iCalendar 文件，即可享受高亮和折叠功能
 

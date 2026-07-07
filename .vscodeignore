@@ -1,8 +1,14 @@
 .vscode/**
 .vscode-test/**
+.git/**
+.DS_Store
+**/.DS_Store
 .gitignore
+*.vsix
 vsc-extension-quickstart.md
 node_modules/**
+examples/**
 
 CLAUDE.md
+GEMINI.md
 .claude

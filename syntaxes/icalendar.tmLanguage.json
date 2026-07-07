@@ -2,8 +2,8 @@
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "iCalendar",
     "scopeName": "source.icalendar",
-    "foldingStartMarker": "^BEGIN:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$",
-    "foldingStopMarker": "^END:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM)$",
+    "foldingStartMarker": "^BEGIN:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM|STANDARD|DAYLIGHT)$",
+    "foldingStopMarker": "^END:(VCALENDAR|VEVENT|VTODO|VJOURNAL|VFREEBUSY|VTIMEZONE|VALARM|STANDARD|DAYLIGHT)$",
     "patterns": [
         {
             "include": "#line"
@@ -55,30 +55,50 @@
         "properties": {
             "patterns": [
                 {
-                    "captures": {
+                    "begin": "^\\b(CALSCALE|METHOD|PRODID|VERSION|ATTACH|CATEGORIES|CLASS|COLOR|COMMENT|CONFERENCE|DESCRIPTION|GEO|IMAGE|LAST-MODIFIED|LOCATION|PERCENT-COMPLETE|PRIORITY|RESOURCES|STATUS|SUMMARY|COMPLETED|DTEND|DUE|DTSTART|DURATION|FREEBUSY|NAME|TRANSP|TZID|TZNAME|TZOFFSETFROM|TZOFFSETTO|TZURL|ATTENDEE|CONTACT|ORGANIZER|RECURRENCE-ID|REFRESH-INTERVAL|RELATED-TO|SOURCE|URL|UID|EXDATE|EXRULE|RDATE|RRULE|ACTION|REPEAT|TRIGGER|CREATED|DTSTAMP|LAST-MODIFIED|SEQUENCE|REQUEST-STATUS|ALTREP|CN|CUTYPE|DELEGATED-FROM|DELEGATED-TO|DIR|ENCODING|FMTTYPE|FBTYPE|LANGUAGE|MEMBER|PARTSTAT|RANGE|RELATED|RELTYPE|ROLE|RSVP|SENT-BY|VALUE)\\b",
+                    "beginCaptures": {
                         "1": {
                             "name": "support.function.property.icalendar"
-                        },
-                        "2": {
-                            "name": "punctuation.separator.property.icalendar"
                         }
                     },
-                    "match": "^\\b(CALSCALE|METHOD|PRODID|VERSION|ATTACH|CATEGORIES|CLASS|COLOR|COMMENT|CONFERENCE|DESCRIPTION|GEO|IMAGE|LAST-MODIFIED|LOCATION|PERCENT-COMPLETE|PRIORITY|RESOURCES|STATUS|SUMMARY|COMPLETED|DTEND|DUE|DTSTART|DURATION|FREEBUSY|NAME|TRANSP|TZID|TZNAME|TZOFFSETFROM|TZOFFSETTO|TZURL|ATTENDEE|CONTACT|ORGANIZER|RECURRENCE-ID|REFRESH-INTERVAL|RELATED-TO|SOURCE|URL|UID|EXDATE|EXRULE|RDATE|RRULE|ACTION|REPEAT|TRIGGER|CREATED|DTSTAMP|LAST-MODIFIED|SEQUENCE|REQUEST-STATUS|ALTREP|CN|CUTYPE|DELEGATED-FROM|DELEGATED-TO|DIR|ENCODING|FMTTYPE|FBTYPE|LANGUAGE|MEMBER|PARTSTAT|RANGE|RELATED|RELTYPE|ROLE|RSVP|SENT-BY|TZID|URL|VALUE)\\b([;:])"
+                    "end": "$",
+                    "patterns": [
+                        {
+                            "include": "#parameters"
+                        },
+                        {
+                            "name": "punctuation.separator.property.icalendar",
+                            "match": ":"
+                        },
+                        {
+                            "include": "#values"
+                        }
+                    ]
                 }
             ]
         },
         "x-properties": {
             "patterns": [
                 {
-                    "captures": {
+                    "begin": "^(X-[A-Z0-9-]+)",
+                    "beginCaptures": {
                         "1": {
                             "name": "entity.other.attribute-name.x-property.icalendar"
-                        },
-                        "2": {
-                            "name": "punctuation.separator.property.icalendar"
                         }
                     },
-                    "match": "^(X-[A-Z0-9-]+)([;:])"
+                    "end": "$",
+                    "patterns": [
+                        {
+                            "include": "#parameters"
+                        },
+                        {
+                            "name": "punctuation.separator.property.icalendar",
+                            "match": ":"
+                        },
+                        {
+                            "include": "#values"
+                        }
+                    ]
                 }
             ]
         },
@@ -91,7 +111,7 @@
                             "name": "punctuation.separator.parameter.icalendar"
                         }
                     },
-                    "end": "(?=:)",
+                    "end": "(?=[:;])",
                     "patterns": [
                         {
                             "captures": {
